@@ -10,27 +10,35 @@
         <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=Black, Size=22}" />
     </ContentPage.ToolbarItems>
 
-    <!-- Display notes in a list -->
-    <CollectionView x:Name="notesCollection"
+    <Grid>
+        <!-- Imagen de fondo -->
+        <Image Source="paperbackground.jpg"
+               Aspect="AspectFill"
+               Opacity="0.3"  
+               IsVisible="True" />
+        
+        <!-- Contenido encima -->
+        <CollectionView x:Name="notesCollection"
                         ItemsSource="{Binding Notes}"
                         Margin="20"
                         SelectionMode="Single"
                         SelectionChanged="notesCollection_SelectionChanged">
 
-        <!-- Designate how the collection of items are laid out -->
-        <CollectionView.ItemsLayout>
-            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
-        </CollectionView.ItemsLayout>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
 
-        <!-- Define the appearance of each item in the list -->
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="models:Note">
-                <StackLayout>
-                    <Label Text="{Binding Text}" FontSize="22"/>
-                    <Label Text="{Binding Date}" FontSize="14" TextColor="Silver"/>
-                </StackLayout>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
-    
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Note">
+                        <Frame BackgroundColor="LightGoldenrodYellow" CornerRadius="12" Padding="10" HasShadow="True">
+                            <StackLayout>
+                                <Label Text="{Binding Text}" FontSize="22" TextColor="IndianRed" />
+                                <Label Text="{Binding Date}" FontSize="14" TextColor="Blue" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+    </Grid>
+
 </ContentPage>

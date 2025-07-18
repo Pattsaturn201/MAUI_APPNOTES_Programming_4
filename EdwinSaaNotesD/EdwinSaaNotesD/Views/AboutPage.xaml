@@ -5,19 +5,41 @@
              x:Class="EdwinSaaNotesD.Views.AboutPage"
              x:DataType="models:About"
              Title="AboutPage">
+    <!-- Asigna el contexto -->
     <ContentPage.BindingContext>
-        <models:About/>
+        <models:About />
     </ContentPage.BindingContext>
-    <VerticalStackLayout Spacing="10" Margin="10">
-        <HorizontalStackLayout Spacing="10">
-            <Image Source="dotnet_bot.png"
-               SemanticProperties.Description="The dot net bot waving hello!"
-               HeightRequest="64" />
-            <Label FontSize="22" FontAttributes="Bold" Text="{Binding Title}" VerticalOptions="End" />
-            <Label FontSize="22" Text="{Binding Version}" VerticalOptions="End" />
-        </HorizontalStackLayout>
 
-        <Label Text="{Binding Message}" />
-        <Button Text="Mi Comida favorita" Clicked="Btn_MiComidafavorita_Clicked" />
-    </VerticalStackLayout>
+    <!-- Estructura con fondo -->
+    <Grid>
+
+        <!-- Imagen de fondo -->
+        <Image Source="backgroundabout.jpg" 
+            Aspect="AspectFill"
+            Opacity="0.3"
+            ZIndex="0" />
+
+         <!-- Contenido encima -->
+         <VerticalStackLayout Spacing="10" Margin="10" ZIndex="1">
+                <HorizontalStackLayout Spacing="10">
+                    <Image Source="wokaj.jpg"
+                       SemanticProperties.Description="The dot net bot waving hello!"
+                       HeightRequest="64" />
+                    <Label FontSize="22"
+                       FontAttributes="Bold"
+                       Text="{Binding Title}"
+                       VerticalOptions="End" />
+                    <Label FontSize="22"
+                       Text="{Binding Version}"
+                       VerticalOptions="End" />
+                </HorizontalStackLayout>
+
+                <Label Text="{Binding Message}" />
+                <Button Text="Mi Comida favorita"
+                    TextColor="Black"
+                    BackgroundColor="CornflowerBlue"
+                    Clicked="Btn_MiComidafavorita_Clicked" />
+            </VerticalStackLayout>
+
+    </Grid>
 </ContentPage>

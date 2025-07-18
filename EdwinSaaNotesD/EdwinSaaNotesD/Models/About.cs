@@ -8,10 +8,10 @@ namespace EdwinSaaNotesD.Models
 {
     internal class About
     {
-        public string Title => AppInfo.Name;
-        public string Version => AppInfo.VersionString;
+        public string Title => AppInfo.Name + "\nBy Patrick Saa";
+        public string Version => "Version: " + AppInfo.VersionString;
         public string ComidaFavoritaInfoUrl => "https://es.wikipedia.org/wiki/Encebollado";
-        public string Message => "This app is written in XAML and C# with .NET MAUI.";
+        public string Message => "Mi nombre es Edwin Saa son fan del futbol y una de mis comidas favoritas es el encebollado.";
 
 
 

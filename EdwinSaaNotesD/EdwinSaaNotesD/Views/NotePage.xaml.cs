@@ -6,14 +6,25 @@ public partial class NotePage : ContentPage
     public NotePage()
 	{
         InitializeComponent();
-       
+        string appDataPath = FileSystem.AppDataDirectory;
+        string randomFileName = $"{Path.GetRandomFileName()}.notes.txt";
+
+        LoadNote(Path.Combine(appDataPath, randomFileName));
+
     }
 
-    public void LoadNote (string filename) 
+    public void LoadNote (string fileName) 
     {
         Models.Note noteModel = new Models.Note();
-        noteModel.Filename = filename;
+        noteModel.Filename = fileName;
 
+        if (File.Exists(fileName))
+        {
+            noteModel.Date = File.GetCreationTime(fileName);
+            noteModel.Text = File.ReadAllText(fileName);
+        }
+
+        BindingContext = noteModel;
 
     }
     private void SaveButton_Clicked(object sender, EventArgs e)
